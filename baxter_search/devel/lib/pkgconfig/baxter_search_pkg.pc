@@ -1,0 +1,8 @@
+prefix=/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel
+
+Name: baxter_search_pkg
+Description: Description of baxter_search_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
