@@ -1,1 +1,1 @@
-# eecs106a_final_project
+# EECS 106A Final Project - Search and Rescue
