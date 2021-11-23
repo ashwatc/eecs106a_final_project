@@ -103,7 +103,7 @@ def main(robo):
             #left_gripper.close()
         #if i == 4:
             #left_gripper.open()
-        rospy.sleep(1.0)
+        rospy.sleep(2.0)
     
     
 # Python's syntax for a main() method

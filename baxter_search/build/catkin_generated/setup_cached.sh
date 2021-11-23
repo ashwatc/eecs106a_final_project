@@ -8,4 +8,3 @@
 
 # modified environment variables
 export PWD='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build'
-export ROS_PACKAGE_PATH='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src:/scratch/shared/baxter_ws/src:/opt/ros/kinetic/share'
