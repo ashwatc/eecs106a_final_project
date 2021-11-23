@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src
+CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build
+CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build
 
 # Utility rule file for baxter_core_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/build: baxter_core
 .PHONY : move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/build
 
 move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/clean:
-	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build/move_arm && $(CMAKE_COMMAND) -P CMakeFiles/baxter_core_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build/move_arm && $(CMAKE_COMMAND) -P CMakeFiles/baxter_core_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/clean
 
 move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/depend:
-	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src/move_arm /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build/move_arm /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build/move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/src /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/src/move_arm /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build/move_arm /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build/move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : move_arm/CMakeFiles/baxter_core_msgs_generate_messages_py.dir/depend
 

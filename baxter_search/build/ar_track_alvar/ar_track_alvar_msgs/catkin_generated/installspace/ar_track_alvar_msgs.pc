@@ -1,4 +1,4 @@
-prefix=/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/install
+prefix=/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/install
 
 Name: ar_track_alvar_msgs
 Description: Description of ar_track_alvar_msgs

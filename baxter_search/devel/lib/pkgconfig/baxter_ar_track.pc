@@ -1,0 +1,8 @@
+prefix=/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/devel
+
+Name: baxter_ar_track
+Description: Description of baxter_ar_track
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
