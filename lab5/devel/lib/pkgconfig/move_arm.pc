@@ -1,8 +1,0 @@
-prefix=/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/devel
-
-Name: move_arm
-Description: Description of move_arm
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
