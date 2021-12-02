@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/findMarkerBundlesNoKinect.dir/nodes/FindMarkerBundlesNoKinect.cpp.o"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/findMarkerBundlesNoKinect.pdb"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/findMarkerBundlesNoKinect"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/findMarkerBundlesNoKinect.pdb"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/findMarkerBundlesNoKinect"
 )
 
 # Per-language clean rules from dependency scanning.

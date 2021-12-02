@@ -7,9 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD='/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src:$ROS_PACKAGE_PATH"
+export LD_LIBRARY_PATH='/scratch/shared/baxter_ws/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:/usr/sww/lib'
+export PKG_CONFIG_PATH='/scratch/shared/baxter_ws/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig'
+export PWD='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build'
+export ROS_PACKAGE_PATH='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src:/scratch/shared/baxter_ws/src:/opt/ros/kinetic/share'

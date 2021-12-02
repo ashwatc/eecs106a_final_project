@@ -7,10 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD='/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/build'
-export PYTHONPATH="/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES='/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/src:$ROS_PACKAGE_PATH"
+export LD_LIBRARY_PATH='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib:/scratch/shared/baxter_ws/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:/usr/sww/lib'
+export PKG_CONFIG_PATH='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib/pkgconfig:/scratch/shared/baxter_ws/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig'
+export PWD='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/build'
+export PYTHONPATH='/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib/python2.7/dist-packages:/scratch/shared/baxter_ws/devel/lib/python2.7/dist-packages:/opt/ros/kinetic/lib/python2.7/dist-packages'

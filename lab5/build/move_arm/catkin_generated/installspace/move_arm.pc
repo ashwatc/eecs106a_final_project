@@ -1,4 +1,4 @@
-prefix=/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/install
+prefix=/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/install
 
 Name: move_arm
 Description: Description of move_arm

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ar_track_alvar_msgs_generate_messages_nodejs"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/share/gennodejs/ros/ar_track_alvar_msgs/msg/AlvarMarker.js"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/share/gennodejs/ros/ar_track_alvar_msgs/msg/AlvarMarkers.js"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/devel/share/gennodejs/ros/ar_track_alvar_msgs/msg/AlvarMarkers.js"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/devel/share/gennodejs/ros/ar_track_alvar_msgs/msg/AlvarMarker.js"
 )
 
 # Per-language clean rules from dependency scanning.

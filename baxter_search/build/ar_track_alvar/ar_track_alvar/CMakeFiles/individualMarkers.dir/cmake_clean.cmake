@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/individualMarkers.dir/nodes/IndividualMarkers.cpp.o"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/individualMarkers.pdb"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/individualMarkers"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/individualMarkers.pdb"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib/ar_track_alvar/individualMarkers"
 )
 
 # Per-language clean rules from dependency scanning.

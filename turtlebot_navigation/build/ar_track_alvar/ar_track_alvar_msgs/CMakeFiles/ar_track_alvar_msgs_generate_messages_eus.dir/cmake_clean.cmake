@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ar_track_alvar_msgs_generate_messages_eus"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/share/roseus/ros/ar_track_alvar_msgs/msg/AlvarMarker.l"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/share/roseus/ros/ar_track_alvar_msgs/msg/AlvarMarkers.l"
-  "/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/devel/share/roseus/ros/ar_track_alvar_msgs/manifest.l"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/devel/share/roseus/ros/ar_track_alvar_msgs/msg/AlvarMarkers.l"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/devel/share/roseus/ros/ar_track_alvar_msgs/msg/AlvarMarker.l"
+  "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/devel/share/roseus/ros/ar_track_alvar_msgs/manifest.l"
 )
 
 # Per-language clean rules from dependency scanning.

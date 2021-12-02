@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/src
+CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/build
+CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/build
 
 # Utility rule file for ar_track_alvar_msgs_gennodejs.
 
@@ -63,10 +63,10 @@ ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/build
 
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/clean:
-	cd /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/build/ar_track_alvar/ar_track_alvar_msgs && $(CMAKE_COMMAND) -P CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/cmake_clean.cmake
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/build/ar_track_alvar/ar_track_alvar_msgs && $(CMAKE_COMMAND) -P CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/cmake_clean.cmake
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/clean
 
 ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/depend:
-	cd /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/src /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/src/ar_track_alvar/ar_track_alvar_msgs /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/build /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/build/ar_track_alvar/ar_track_alvar_msgs /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_navigation/build/ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/src /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/src/ar_track_alvar/ar_track_alvar_msgs /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/build /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/build/ar_track_alvar/ar_track_alvar_msgs /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/build/ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ar_track_alvar/ar_track_alvar_msgs/CMakeFiles/ar_track_alvar_msgs_gennodejs.dir/depend
 

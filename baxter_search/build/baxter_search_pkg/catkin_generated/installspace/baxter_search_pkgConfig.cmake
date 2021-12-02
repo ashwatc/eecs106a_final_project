@@ -67,14 +67,14 @@ set(baxter_search_pkg_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(baxter_search_pkg_SOURCE_PREFIX /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/src/baxter_search_pkg)
-  set(baxter_search_pkg_DEVEL_PREFIX /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/devel)
+  set(baxter_search_pkg_SOURCE_PREFIX /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src/baxter_search_pkg)
+  set(baxter_search_pkg_DEVEL_PREFIX /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel)
   set(baxter_search_pkg_INSTALL_PREFIX "")
   set(baxter_search_pkg_PREFIX ${baxter_search_pkg_DEVEL_PREFIX})
 else()
   set(baxter_search_pkg_SOURCE_PREFIX "")
   set(baxter_search_pkg_DEVEL_PREFIX "")
-  set(baxter_search_pkg_INSTALL_PREFIX /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/install)
+  set(baxter_search_pkg_INSTALL_PREFIX /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/install)
   set(baxter_search_pkg_PREFIX ${baxter_search_pkg_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/install/lib;/scratch/shared/baxter_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/install/lib;/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/turtlebot_navigation/devel/lib;/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/devel/lib;/scratch/shared/baxter_ws/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

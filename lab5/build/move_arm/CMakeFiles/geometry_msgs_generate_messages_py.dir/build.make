@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src
+CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build
+CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build
 
 # Utility rule file for geometry_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/build: geometry_msgs_
 .PHONY : move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 
 move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
-	cd /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/move_arm && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/move_arm && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 
 move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend:
-	cd /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src/move_arm /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/move_arm /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src/move_arm /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/move_arm /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : move_arm/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
 

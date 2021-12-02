@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src
+CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build
+CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build
 
 # Utility rule file for moveit_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/build: moveit_msgs_generate_m
 .PHONY : ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/build
 
 ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/clean:
-	cd /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/ik && $(CMAKE_COMMAND) -P CMakeFiles/moveit_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/ik && $(CMAKE_COMMAND) -P CMakeFiles/moveit_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/clean
 
 ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/depend:
-	cd /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src/ik /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/ik /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src/ik /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/ik /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ik/CMakeFiles/moveit_msgs_generate_messages_py.dir/depend
 

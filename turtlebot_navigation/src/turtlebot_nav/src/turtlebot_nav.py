@@ -44,7 +44,7 @@ def controller(turtlebot_frame):
   Kdy = -0.3
   last_x = 0
   last_y = 0
-  # goal_frame = 'ar_'
+  goal_frame = 'ar_marker_12'
   r.sleep()
   # Loop until the node is killed with Ctrl-C
   while not rospy.is_shutdown():

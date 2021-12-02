@@ -1,8 +1,8 @@
-# Install script for directory: /home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src/ik
+# Install script for directory: /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src/ik
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/install")
+  set(CMAKE_INSTALL_PREFIX "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/ik/catkin_generated/installspace/ik.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/ik/catkin_generated/installspace/ik.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ik/cmake" TYPE FILE FILES
-    "/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/ik/catkin_generated/installspace/ikConfig.cmake"
-    "/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/build/ik/catkin_generated/installspace/ikConfig-version.cmake"
+    "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/ik/catkin_generated/installspace/ikConfig.cmake"
+    "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/build/ik/catkin_generated/installspace/ikConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ik" TYPE FILE FILES "/home/cc/ee106a/fl21/class/ee106a-aer/ros_workspaces/lab5/src/ik/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ik" TYPE FILE FILES "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/lab5/src/ik/package.xml")
 endif()
 

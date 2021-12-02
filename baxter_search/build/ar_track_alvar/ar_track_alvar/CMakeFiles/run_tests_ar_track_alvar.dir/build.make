@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/src
+CMAKE_SOURCE_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build
+CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build
 
 # Utility rule file for run_tests_ar_track_alvar.
 
@@ -63,10 +63,10 @@ ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/build: run
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/build
 
 ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/clean:
-	cd /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build/ar_track_alvar/ar_track_alvar && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_ar_track_alvar.dir/cmake_clean.cmake
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build/ar_track_alvar/ar_track_alvar && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_ar_track_alvar.dir/cmake_clean.cmake
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/clean
 
 ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/depend:
-	cd /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/src /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/src/ar_track_alvar/ar_track_alvar /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build/ar_track_alvar/ar_track_alvar /home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/baxter_search/build/ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/src/ar_track_alvar/ar_track_alvar /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build/ar_track_alvar/ar_track_alvar /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/baxter_search/build/ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ar_track_alvar/ar_track_alvar/CMakeFiles/run_tests_ar_track_alvar.dir/depend
 
