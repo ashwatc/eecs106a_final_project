@@ -1,0 +1,2 @@
+kinect_cv
+-DCATKIN_DEVEL_PREFIX=/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_kinect/devel -DCMAKE_INSTALL_PREFIX=/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_kinect/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/cc/ee106a/fl21/class/ee106a-adg/eecs106a_final_project/turtlebot_kinect/devel
+
+Name: kinect_cv
+Description: Description of kinect_cv
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
