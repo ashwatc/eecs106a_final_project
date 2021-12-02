@@ -7,6 +7,20 @@ import cv2
 from cv_bridge import CvBridge, CvBridgeError
 import numpy as np
 import imutils
+from geometry_msgs.msg import Twist
+
+
+Kppos = 0.1
+Kptheta = -0.01
+pos_vel = 0
+theta_vel = 0
+last_time = 0
+start_time = 0
+Kdpos = 0.1
+Kdtheta = -0.3
+last_pos = 0
+last_theta = 0
+
 # Define the callback method which is called whenever this node receives a 
 # message on its subscribed topic. The received message is passed as the first
 # argument to callback().
@@ -37,17 +51,57 @@ def callback(message):
     mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
     cv2.rectangle(mask,(x,y),(x+w,y+h),(0, 0,255),5)
     cv2.circle(mask, (x + w/2, y + h/2), 4, (0, 255, 0), -1)
-    # M = cv2.moments(c)
-    # cX = int(M["m10"] / M["m00"])
-    # cY = int(M["m01"] / M["m00"])
-    # # draw the contour and center of the shape on the image
-    # cv2.drawContours(mask, [c], -1, (0, 255, 0), 2)
-    # cv2.circle(mask, (cX, cY), 7, (0, 255, 0), -1)
-    
-    #display the image
-    cv2.imshow('image',mask)
-    cv2.waitKey(0)
+    # print("x: ", x + w/2)
+    # print("y: ", y + h/2)
+    # print("\n")
+    # # #display the image
+    # cv2.imshow('image',mask)
+    # cv2.waitKey(0)
+    #-----------------------------------------------------------------------------
 
+    #Create a publisher and a tf buffer, which is primed with a tf listener
+    pub = rospy.Publisher('mobile_base/commands/velocity', Twist, queue_size=10)
+  
+    # Create a timer object that will sleep long enough to result in
+    # a 10Hz publishing rate
+    r = rospy.Rate(3) # 10hz
+    
+    global last_time
+    global last_pos
+    global last_theta
+
+
+    # goal_frame = 'ar_'
+    r.sleep()
+    # Loop until the node is killed with Ctrl-C
+    try:
+        currTime = rospy.Time.now()
+        t = (currTime - start_time).to_sec()
+        dt = t - last_time
+        # print(last_time, t, dt)
+        # Get error
+        pos = w * h / (mask.shape[0] * mask.shape[1])
+        theta = ((x + w/2) - (mask.shape[1] / 2))
+
+        # Generate a control command to send to the robot
+        pos_vel = Kppos * pos #+ Kdpos * (pos - last_pos) / dt
+        theta_vel = Kptheta * theta  #+ Kdtheta * (theta - last_theta) / dt
+        print(pos_vel)
+        print(theta_vel)
+        control_command = Twist()
+        control_command.linear.x = pos_vel
+        control_command.angular.z = theta_vel
+
+        last_pos = pos
+        last_theta = theta
+        last_time = t
+        #################################### end your code ###############
+
+        pub.publish(control_command)
+    except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+        print(e)
+    # Use our rate object to sleep until it is time to publish again
+    r.sleep()
 # Define the method which contains the node's main functionality
 def listener():
 
@@ -60,11 +114,11 @@ def listener():
 
 # Python's syntax for a main() method
 if __name__ == '__main__':
-
+    global start_time
     # Run this program as a new node in the ROS computation graph called
     # /listener_<id>, where <id> is a randomly generated numeric string. This
     # randomly generated name means we can start multiple copies of this node
     # without having multiple nodes with the same name, which ROS doesn't allow.
     rospy.init_node('kinect_processing_node', anonymous=True)
-
+    start_time = rospy.Time.now()
     listener()
