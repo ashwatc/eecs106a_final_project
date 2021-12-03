@@ -51,9 +51,11 @@ def controller(turtlebot_frame):
     goal_frame = raw_input("Enter destinate AR tag:\n")
     while not rospy.is_shutdown():
       try:
+        print("HERE")
         currTime = rospy.Time.now()
         t = (currTime - startTime).to_sec()
         trans = tfBuffer.lookup_transform(turtlebot_frame, goal_frame, rospy.Time())
+        print(trans)
         dt = t - last_time
         # print(last_time, t, dt)
         last_time = t

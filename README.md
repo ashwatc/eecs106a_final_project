@@ -20,7 +20,7 @@ subscribe: turtlebot boolean status, list of AR tags in view
 Client to: move arm in predetermined path for scan
 
 Node: turtlebot_move
-subcribe: intermediate target pose in turtlebot frame
+subcribe: next ar_target
 publish: boolean status (moving or stopped)
 
 Node: turtlebot_seek
