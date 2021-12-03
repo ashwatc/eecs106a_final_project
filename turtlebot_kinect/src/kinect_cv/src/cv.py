@@ -10,8 +10,8 @@ import imutils
 from geometry_msgs.msg import Twist
 
 
-Kppos = 0.1
-Kptheta = -0.01
+Kppos = 0.001
+Kptheta = -0.001
 pos_vel = 0
 theta_vel = 0
 last_time = 0
@@ -24,6 +24,9 @@ last_theta = 0
 # Define the callback method which is called whenever this node receives a 
 # message on its subscribed topic. The received message is passed as the first
 # argument to callback().
+
+pub = rospy.Publisher('mobile_base/commands/velocity', Twist, queue_size=10)
+
 def callback(message):
     # Print the contents of the message to the console
     bridge = CvBridge()
@@ -44,15 +47,19 @@ def callback(message):
     im2, cnts, hierarchy = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
     cv2.CHAIN_APPROX_SIMPLE)
 
+    if not cnts:
+        return
+
     c = max(cnts, key = cv2.contourArea)
     x,y,w,h = cv2.boundingRect(c)
 
-    # draw the biggest contour (c) in green
-    mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
-    cv2.rectangle(mask,(x,y),(x+w,y+h),(0, 0,255),5)
-    cv2.circle(mask, (x + w/2, y + h/2), 4, (0, 255, 0), -1)
+    # # draw the biggest contour (c) in green
+    # mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
+    # cv2.rectangle(mask,(x,y),(x+w,y+h),(0, 0,255),5)
+    # cv2.circle(mask, (x + w/2, y + h/2), 4, (0, 255, 0), -1)
     # print("x: ", x + w/2)
     # print("y: ", y + h/2)
+    # print("area:", w*h)
     # print("\n")
     # # #display the image
     # cv2.imshow('image',mask)
@@ -60,13 +67,12 @@ def callback(message):
     #-----------------------------------------------------------------------------
 
     #Create a publisher and a tf buffer, which is primed with a tf listener
-    pub = rospy.Publisher('mobile_base/commands/velocity', Twist, queue_size=10)
   
     # Create a timer object that will sleep long enough to result in
     # a 10Hz publishing rate
-    r = rospy.Rate(3) # 10hz
+    r = rospy.Rate(10) # 10hz
     
-    global last_time
+    global last_time, pub
     global last_pos
     global last_theta
 
@@ -80,17 +86,33 @@ def callback(message):
         dt = t - last_time
         # print(last_time, t, dt)
         # Get error
-        pos = w * h / (mask.shape[0] * mask.shape[1])
+        pos = (mask.shape[0] * mask.shape[1]) / (w * h)
+        print(w*h, mask.shape)
         theta = ((x + w/2) - (mask.shape[1] / 2))
+        # print(theta)
 
         # Generate a control command to send to the robot
         pos_vel = Kppos * pos #+ Kdpos * (pos - last_pos) / dt
         theta_vel = Kptheta * theta  #+ Kdtheta * (theta - last_theta) / dt
+        # print(pos_vel)
+        # print(theta_vel)
+
         print(pos_vel)
-        print(theta_vel)
+        print("\n")
         control_command = Twist()
-        control_command.linear.x = pos_vel
-        control_command.angular.z = theta_vel
+        
+        if w * h < 1000:
+            control_command.angular.z = 0.6
+            control_command.linear.x = 0.0 #pos_vel
+
+        else:
+            control_command.angular.z = theta_vel
+            if w * h < 15000:
+                control_command.linear.x = pos_vel
+            else:
+                control_command.linear.x = 0
+                control_command.angular.z = 0
+
 
         last_pos = pos
         last_theta = theta
