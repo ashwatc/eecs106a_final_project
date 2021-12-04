@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>baxter_search_pkg</name>
+  <name>baxter_search</name>
   <version>0.0.0</version>
   <description>The baxter_search_pkg package</description>
 
