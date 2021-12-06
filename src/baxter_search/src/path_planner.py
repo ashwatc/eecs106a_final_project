@@ -10,6 +10,7 @@ import moveit_commander
 from moveit_msgs.msg import OrientationConstraint, Constraints, CollisionObject
 from geometry_msgs.msg import PoseStamped
 from shape_msgs.msg import SolidPrimitive
+import numpy as np
 
 class PathPlanner(object):
     """
@@ -24,7 +25,7 @@ class PathPlanner(object):
     _group: moveit_commander.MoveGroupCommander; the move group is moveit's primary planning class
     _planning_scene_publisher: ros publisher; publishes to the planning scene
     """
-    def __init__(self, group_name):
+    def __init__(self, group_name, end_effector, vel_scale_factor=1.0):
         """
         Constructor.
         Inputs:
@@ -37,7 +38,7 @@ class PathPlanner(object):
         rospy.on_shutdown(self.shutdown)
 
         # Initialize moveit_commander
-        moveit_commander.roscpp_initialize(sys.argv)
+        moveit_commander.roscpp_initialize(sys.argv + ["baxter"])
 
         # Initialize the robot
         self._robot = moveit_commander.RobotCommander()
@@ -51,8 +52,12 @@ class PathPlanner(object):
         # Instantiate a move group
         self._group = moveit_commander.MoveGroupCommander(group_name)
 
+        self._group.set_max_velocity_scaling_factor(vel_scale_factor)
+
+        self._group.set_end_effector_link(end_effector)
+
         # Set the maximum time MoveIt will try to plan before giving up
-        self._group.set_planning_time(5)
+        self._group.set_planning_time(10)
 
         # Set the bounds of the workspace
         self._group.set_workspace([-2, -2, -2, 2, 2, 2])
@@ -96,7 +101,7 @@ class PathPlanner(object):
         plan: a moveit_msgs/RobotTrajectory plan
         """
 
-        return self._group.execute(plan, True)
+        return self._group.execute(plan, False)
 
 
     def add_box_obstacle(self, size, name, pose):
@@ -138,4 +143,18 @@ class PathPlanner(object):
         co.id = name
 
         self._planning_scene_publisher.publish(co)
+
+    def stop_execution(self):
+        self._group.stop()
+
+    def close_to_goal(self):
+        goal = np.array(self._group.get_joint_value_target())
+        curr = np.array(self._group.get_current_joint_values())
+        tolerance = np.array(self._group.get_goal_joint_tolerance())
+        print(goal)
+        print(curr)
+        print(tolerance)
+        return np.all(np.abs(np.array(self._group.get_joint_value_target()) - np.array(self._group.get_current_joint_values())) <= np.array(self._group.get_goal_joint_tolerance()))
+
+
 

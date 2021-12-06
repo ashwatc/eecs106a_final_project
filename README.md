@@ -24,3 +24,16 @@ subcribe: next ar_target
 publish: boolean status (moving or stopped)
 
 Node: turtlebot_seek
+
+
+Setup:
+
+source devel/setup.bash
+
+./baxter.sh archytas.local
+
+rosrun baxter_tools enable_robot.py -e
+
+rosrun baxter_interface joint_trajectory_action_server.py
+
+roslaunch baxter_moveit_config demo_baxter.launch

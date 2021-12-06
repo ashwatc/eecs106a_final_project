@@ -127,8 +127,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/gtest/cmake_install.cmake")
   include("/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/ar_track_alvar/ar_track_alvar_msgs/cmake_install.cmake")
-  include("/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/baxter_search/cmake_install.cmake")
   include("/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/ar_track_alvar/ar_track_alvar/cmake_install.cmake")
+  include("/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/baxter_search/cmake_install.cmake")
   include("/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/turtlebot_nav/cmake_install.cmake")
 
 endif()
