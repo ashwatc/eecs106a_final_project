@@ -59,10 +59,10 @@ class Guide:
   		self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
 
   		self._stop = False
-  		rospy.Subscriber("stop_guiding", Bool, lambda msg: self.set_stop(msg.data))
+  		rospy.Subscriber("/baxter_guiding", Bool, lambda msg: self.set_stop(msg.data))
 
- 	def set_stop(self, data):
- 		self._stop = data
+ 	def set_stop(self, start_guiding):
+ 		self._stop = not start_guiding
 
 
   	def run(self):
