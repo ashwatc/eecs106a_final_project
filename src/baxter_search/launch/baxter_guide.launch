@@ -1,0 +1,5 @@
+<launch>
+    <node name="turtlebot_hop" pkg="turtlebot_nav" type="turtlebot_hop.py" respawn="false" output="screen" required="true" />
+    <node name="guiding_path" pkg="baxter_search" type="guiding_path.py" respawn="false" output="screen" required="true" />
+    <node name="guide_coordinator" pkg="baxter_search" type="guide_coordinator.py" respawn="false" output="screen" required="true" />
+</launch>

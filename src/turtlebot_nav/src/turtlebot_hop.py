@@ -12,20 +12,23 @@ import sys
 import numpy as np
 
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Bool
+from std_msgs.msg import String, Bool
+from turtlebot_nav.srv import Hop
 
 #Define the method which contains the main functionality of the node.
 
-class TurtlebotController:
+class TurtlebotHop:
 
   def __init__(self):
-    rospy.Subscriber("/turtlebot_next_target", Bool, self.initiate_hop)
+    # rospy.Subscriber("/turtlebot_next_target", String, self.hop)
     
     #Create a publisher and a tf buffer, which is primed with a tf listener
     self.command_vel_pub = rospy.Publisher('mobile_base/commands/velocity', Twist, queue_size=10)
-    self.hop_complete_pub = rospy.Publisher('/turtle_hop_complete', Bool, queue_size=10)
     self.tfBuffer = tf2_ros.Buffer()
     self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
+
+    #Create a service that completes a single hop from one marker to the next
+    rospy.Service('turtlebot_hop', Hop, self.hop)
 
     # Create a timer object that will sleep long enough to result in
     # a 10Hz publishing rate
@@ -38,16 +41,20 @@ class TurtlebotController:
 
     self._goal_frame = None
 
-  def initiate_hop(self, new_frame):
-      self._goal_frame = new_frame 
-      self.hop()
-      self.hop_complete_pub.publish(True)
+    rospy.spin()
 
-  def hop(self):
+  # def initiate_hop(self, new_frame):
+  #     self._goal_frame = new_frame 
+  #     self.hop()
+  #     self.hop_complete_pub.publish(True)
+
+  def hop(self, request):
     """
     Controls a turtlebot whose position is denoted by turtlebot_frame,
     to go to a position denoted by target_frame
     """
+
+    self._goal_frame = request.next_target
 
     x_vel = 0
     theta_vel = 0
@@ -56,39 +63,41 @@ class TurtlebotController:
     last_x = 0
     last_y = 0
 
-    r.sleep()
+    self.r.sleep()
     # Loop until the node is killed with Ctrl-C
 
-    if self.goal_frame:
-      while not rospy.is_shutdown():
-        try:
-          currTime = rospy.Time.now()
-          t = (currTime - startTime).to_sec()
-          trans = self.tfBuffer.lookup_transform(turtlebot_frame, self.goal_frame, rospy.Time())
-          dt = t - last_time
-          # print(last_time, t, dt)
-          last_time = t
-          # Process trans to get your state error
-          x = trans.transform.translation.x
-          y = trans.transform.translation.y
+    while not rospy.is_shutdown():
+      try:
+        currTime = rospy.Time.now()
+        t = (currTime - startTime).to_sec()
+        trans = self.tfBuffer.lookup_transform("base_link", self._goal_frame, rospy.Time())
+        dt = t - last_time
+        # print(last_time, t, dt)
+        last_time = t
+        # Process trans to get your state error
+        x = trans.transform.translation.x
+        y = trans.transform.translation.y
 
-          # Generate a control command to send to the robot
-          x_vel = self.Kpx * x + self.Kdx * (x - last_x) / dt
-          theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
-          control_command = Twist()
-          control_command.linear.x = x_vel
-          control_command.angular.z = theta_vel
+        # Generate a control command to send to the robot
+        x_vel = self.Kpx * x + self.Kdx * (x - last_x) / dt
+        theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
+        control_command = Twist()
+        control_command.linear.x = x_vel
+        control_command.angular.z = theta_vel
 
-          last_x = x
-          last_y = y
-          #################################### end your code ###############
+        last_x = x
+        last_y = y
+        #################################### end your code ###############
 
-          pub.publish(control_command)
-        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
-          print(e)
-          break
-        # Use our rate object to sleep until it is time to publish again
-        r.sleep()
+        self.command_vel_pub.publish(control_command)
+      except (tf2_ros.LookupException) as e:
+        return True
+
+      except(tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+        print(e)
+        return False
+      # Use our rate object to sleep until it is time to publish again
+      self.r.sleep()
 
       
 # This is Python's sytax for a main() method, which is run by default
@@ -99,9 +108,9 @@ if __name__ == '__main__':
 
   #Run this program as a new node in the ROS computation graph 
   #called /turtlebot_controller.
-  rospy.init_node('turtlebot_controller', anonymous=True)
+  rospy.init_node('turtlebot_hop', anonymous=True)
 
-  controller = TurtlebotController()
+  controller = TurtlebotHop()
   # try:
   #   controller(sys.argv[1])
   # except rospy.ROSInterruptException:

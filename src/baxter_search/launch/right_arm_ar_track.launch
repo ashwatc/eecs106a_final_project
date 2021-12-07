@@ -17,5 +17,5 @@
 		<remap from="camera_image"  to="$(arg cam_image_topic)" />
 		<remap from="camera_info"   to="$(arg cam_info_topic)" />
 	</node>
-	<node pkg="tf" type="static_transform_publisher" name="ar_transform" args="0.014 0 -0.397 1.5971 0 0 ar_marker_6 base_link 100" />
+	<node pkg="tf" type="static_transform_publisher" name="ar_transform" args="0.014 0 -0.397 1.5971 0 0 ar_marker_5 base_link 100" />
 </launch>

@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_3c517/fast"
-/usr/bin/make -f CMakeFiles/cmTC_3c517.dir/build.make CMakeFiles/cmTC_3c517.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_75cad/fast"
+/usr/bin/make -f CMakeFiles/cmTC_75cad.dir/build.make CMakeFiles/cmTC_75cad.dir/build
 make[1]: Entering directory '/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_3c517.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_3c517.dir/CheckSymbolExists.c.o   -c /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_3c517
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c517.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_3c517.dir/CheckSymbolExists.c.o  -o cmTC_3c517 -rdynamic 
-CMakeFiles/cmTC_3c517.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_75cad.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_75cad.dir/CheckSymbolExists.c.o   -c /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_75cad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75cad.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_75cad.dir/CheckSymbolExists.c.o  -o cmTC_75cad -rdynamic 
+CMakeFiles/cmTC_75cad.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_3c517.dir/build.make:97: recipe for target 'cmTC_3c517' failed
-make[1]: *** [cmTC_3c517] Error 1
+CMakeFiles/cmTC_75cad.dir/build.make:97: recipe for target 'cmTC_75cad' failed
+make[1]: *** [cmTC_75cad] Error 1
 make[1]: Leaving directory '/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_3c517/fast' failed
-make: *** [cmTC_3c517/fast] Error 2
+Makefile:126: recipe for target 'cmTC_75cad/fast' failed
+make: *** [cmTC_75cad/fast] Error 2
 
 File /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c091f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c091f.dir/build.make CMakeFiles/cmTC_c091f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_15b3e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_15b3e.dir/build.make CMakeFiles/cmTC_15b3e.dir/build
 make[1]: Entering directory '/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c091f.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_c091f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_c091f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c091f.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_c091f.dir/CheckFunctionExists.c.o  -o cmTC_c091f -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTC_15b3e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_15b3e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_15b3e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_15b3e.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_15b3e.dir/CheckFunctionExists.c.o  -o cmTC_15b3e -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_c091f.dir/build.make:97: recipe for target 'cmTC_c091f' failed
-make[1]: *** [cmTC_c091f] Error 1
+CMakeFiles/cmTC_15b3e.dir/build.make:97: recipe for target 'cmTC_15b3e' failed
+make[1]: *** [cmTC_15b3e] Error 1
 make[1]: Leaving directory '/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_c091f/fast' failed
-make: *** [cmTC_c091f/fast] Error 2
+Makefile:126: recipe for target 'cmTC_15b3e/fast' failed
+make: *** [cmTC_15b3e/fast] Error 2
 
 

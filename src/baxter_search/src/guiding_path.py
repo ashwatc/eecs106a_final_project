@@ -19,7 +19,7 @@ CAMERA_LINK = "right_hand_camera"
 class Guide:
 
 	def __init__(self, group="right_arm", end_effector=CAMERA_LINK, speed=0.25):
-		self.planner = PathPlanner("right_arm", end_effector, 0.25)
+		self.planner = PathPlanner(group, end_effector, 0.25)
 
 		self.end_ef = end_effector
 
@@ -58,7 +58,7 @@ class Guide:
 		self.tfBuffer = tf2_ros.Buffer()
   		self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
 
-  		self._stop = False
+  		self._stop = True
   		rospy.Subscriber("/baxter_guiding", Bool, lambda msg: self.set_stop(msg.data))
 
  	def set_stop(self, start_guiding):
@@ -75,7 +75,9 @@ class Guide:
 					print("Failed to find trajectory, retrying")
 					continue
 
-				raw_input("Enter to execute plan")
+				print("Planned path!")
+				while self._stop:
+					continue
 
 				self.planner.execute_plan(plan)
 				
@@ -87,7 +89,6 @@ class Guide:
 					close_to_goal = np.linalg.norm([curr_trans.transform.translation.x - self.goal.pose.position.x, curr_trans.transform.translation.y - self.goal.pose.position.y, curr_trans.transform.translation.z - self.goal.pose.position.z]) <= 0.02
 				if self._stop:
 					self.planner.stop_execution()
-					self.set_stop(False)
 					continue
 				break
 
