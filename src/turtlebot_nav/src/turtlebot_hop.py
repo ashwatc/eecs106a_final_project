@@ -35,7 +35,7 @@ class TurtlebotHop:
     # a 10Hz publishing rate
     self.r = rospy.Rate(3) # 10hz
 
-    self.Kpx = 0.1
+    self.Kpx = 0.5
     self.Kpy = 1
     self.Kdx = 0.01
     self.Kdy = -0.3
@@ -105,7 +105,7 @@ class TurtlebotHop:
 
         control_command = Twist()
 
-        if np.abs(y) > 0.02:
+        if np.abs(y) > 0.04 and dist > 0.2:
           theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
           control_command.angular.z = theta_vel
           if log:
@@ -115,13 +115,6 @@ class TurtlebotHop:
           control_command.linear.x = x_vel
           if log:
             print("Translating %f" % x_vel)
-
-        # # Generate a control command to send to the robot
-        # x_vel = self.Kpx * x # + self.Kdx * (x - last_x) / dt
-        # theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
-        # control_command = Twist()
-        # control_command.linear.x = x_vel
-        # control_command.angular.z = theta_vel
 
         last_x = x
         last_y = y
