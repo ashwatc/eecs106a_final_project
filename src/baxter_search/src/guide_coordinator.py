@@ -4,6 +4,8 @@ import rospy
 from std_msgs.msg import Bool, String
 from ar_track_alvar_msgs.msg import AlvarMarkers
 from turtlebot_nav.srv import Hop
+from baxter_search.srv import Coordinate
+from geometry_msgs.msg import PoseStamped
 
 class GuideCoordinator:
 
@@ -11,10 +13,13 @@ class GuideCoordinator:
 		self.seen_markers = set()
 		self.baxter_guiding_pub = rospy.Publisher('/baxter_guiding', Bool, queue_size=10)
 
-		rospy.wait_for_service('turtlebot_hop')
-		self.turtle_hop_srv = rospy.ServiceProxy('turtlebot_hop', Hop)
+		rospy.wait_for_service('/turtlebot_hop')
+		self.turtle_hop_srv = rospy.ServiceProxy('/turtlebot_hop', Hop)
 
-		rospy.Subscriber("/begin_guide", Bool, self.begin_guide)
+		# rospy.Subscriber("/begin_guide", Bool, self.begin_guide)
+		rospy.Service('/coordinate', Coordinate, self.coordinate)
+
+		self.pub_goal =rospy.Publisher("/guide_goal", PoseStamped)
 
 		rospy.spin()
 
@@ -38,11 +43,15 @@ class GuideCoordinator:
 		self.baxter_guiding_pub.publish(start_guiding)
 
 
-	def begin_guide(self, msg):
-		self.seen_markers = set([5, 0])
+	def coordinate(self, request):
+		self.seen_markers = set(request.ignore_tags)
 		self.set_baxter_guiding(True)
 		print("HERE!")
-		rospy.Subscriber("/ar_pose_marker", AlvarMarkers, self.check_seen)
+		self.pub_goal.publish(request.goal_pose)
+		sub = rospy.Subscriber("/ar_pose_marker", AlvarMarkers, self.check_seen)
+		rospy.wait_for_message("/finished_guide", Bool)
+		sub.unsubscribe()
+
 
 if __name__ == '__main__':
 	rospy.init_node('guide_coordinator')

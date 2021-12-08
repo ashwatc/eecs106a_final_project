@@ -36,36 +36,42 @@ class Guide:
 		self.orien_const = orien_const
 
 		# TODO: get this from a topic
-		x = 0.628
-		y = -0.159
-		z = 0.065
-		goal = PoseStamped()
-		goal.header.frame_id = "base"
+		# x = 0.628
+		# y = -0.159
+		# z = 0.065
+		# goal = PoseStamped()
+		# goal.header.frame_id = "base"
 
-		#x, y, and z position
-		goal.pose.position.x = x
-		goal.pose.position.y = y
-		goal.pose.position.z = z
+		# #x, y, and z position
+		# goal.pose.position.x = x
+		# goal.pose.position.y = y
+		# goal.pose.position.z = z
 
-		#Orientation as a quaternion
-		goal.pose.orientation.x = 0.704
-		goal.pose.orientation.y = -0.690
-		goal.pose.orientation.z = 0.112
-		goal.pose.orientation.w = -0.126
+		# #Orientation as a quaternion
+		# goal.pose.orientation.x = 0.704
+		# goal.pose.orientation.y = -0.690
+		# goal.pose.orientation.z = 0.112
+		# goal.pose.orientation.w = -0.126
 
-		self.goal = goal
+		# self.goal = goal
 
 		self.tfBuffer = tf2_ros.Buffer()
   		self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
 
   		self._stop = True
   		rospy.Subscriber("/baxter_guiding", Bool, lambda msg: self.set_stop(msg.data))
+  		rospy.Subscriber("/guide_goal", PoseStamped, self.guide_to_goal)
+
+  		self.pub_finished = ropsy.Publisher("/finished_guide", Bool, queue_size=1).publish(True)
+
+  		rospy.spin()
 
  	def set_stop(self, start_guiding):
  		self._stop = not start_guiding
 
 
-  	def run(self):
+  	def guide_to_goal(self, msg):
+  		self.goal = msg
 		while not rospy.is_shutdown():
 			try:
 				print("\nPlanning path to goal pose")
@@ -76,6 +82,7 @@ class Guide:
 					continue
 
 				print("Planned path!")
+				
 				while self._stop:
 					continue
 
@@ -93,7 +100,9 @@ class Guide:
 				if self._stop:
 					self.planner.stop_execution()
 					continue
-				break
+				else:
+					self.pub_finished.publish(True)
+					break
 
 			except Exception as e:
 				print e
@@ -103,4 +112,3 @@ class Guide:
 if __name__ == '__main__':
 	rospy.init_node('guide_arm')
 	guide = Guide()
-	guide.run()
