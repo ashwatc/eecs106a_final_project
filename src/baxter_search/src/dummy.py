@@ -1,13 +1,13 @@
 #!/usr/bin/python
 
 import rospy
-from baxter_search.srv import Coordinate
+from baxter_search.srv import Guide
 from geometry_msgs.msg import PoseStamped
 
 if __name__ == '__main__':
 	rospy.init_node('dummy')
-	rospy.wait_for_service('/coordinate')
-	coordinator_srv = rospy.ServiceProxy('/coordinate', Coordinate)
+	rospy.wait_for_service('/guide')
+	guide_srv = rospy.ServiceProxy('/guide', Guide)
 
 	x = 0.628
 	y = -0.159
@@ -26,9 +26,9 @@ if __name__ == '__main__':
 	goal.pose.orientation.z = 0.112
 	goal.pose.orientation.w = -0.126
 	
-	c = Coordinate()
-	c.goal_pose = goal
-	c.ignore_tags [5, 0]
+	g = Guide()
+	g.goal_pose = goal
+	g.ignore_tags = [5, 0]
 	while not rospy.is_shutdown():
 		r = raw_input("Enter to begin")
-		coordinator_srv(c)
+		guide_srv(goal, [5, 0])

@@ -16,7 +16,7 @@ from path_planner import PathPlanner
 
 CAMERA_LINK = "right_hand_camera"
 
-class Guide:
+class GuideController:
 
 	def __init__(self, group="right_arm", end_effector=CAMERA_LINK, speed=0.25):
 		self.planner = PathPlanner(group, end_effector, 0.25)
@@ -62,7 +62,7 @@ class Guide:
   		rospy.Subscriber("/baxter_guiding", Bool, lambda msg: self.set_stop(msg.data))
   		rospy.Subscriber("/guide_goal", PoseStamped, self.guide_to_goal)
 
-  		self.pub_finished = ropsy.Publisher("/finished_guide", Bool, queue_size=1).publish(True)
+  		self.pub_finished = rospy.Publisher("/finished_guide", Bool, queue_size=10)
 
   		rospy.spin()
 
@@ -111,4 +111,4 @@ class Guide:
 
 if __name__ == '__main__':
 	rospy.init_node('guide_arm')
-	guide = Guide()
+	guide = GuideController()

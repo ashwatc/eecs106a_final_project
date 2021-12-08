@@ -3,6 +3,6 @@ prefix=/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/deve
 Name: baxter_search
 Description: Description of baxter_search
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/devel/include
 Libs: -L${prefix}/lib 
 Requires: 

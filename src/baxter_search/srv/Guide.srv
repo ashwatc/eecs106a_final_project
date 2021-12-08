@@ -1,4 +1,4 @@
 geometry_msgs/PoseStamped goal_pose
-int32 ignore_tags[]
+int32[] ignore_tags
 ---
 bool success

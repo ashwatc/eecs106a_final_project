@@ -8,11 +8,12 @@
 #in both the package manifest AND the Python file in which it is used.
 import rospy
 import tf2_ros
+import tf2_geometry_msgs
 import sys
 import numpy as np
 
-from geometry_msgs.msg import Twist
-from std_msgs.msg import String, Bool
+from geometry_msgs.msg import Twist, PoseStamped, Pose
+from std_msgs.msg import String, Bool, Header
 from turtlebot_nav.srv import Hop
 
 #Define the method which contains the main functionality of the node.
@@ -35,8 +36,8 @@ class TurtlebotHop:
     self.r = rospy.Rate(3) # 10hz
 
     self.Kpx = 0.1
-    self.Kpy = -1
-    self.Kdx = 0.1
+    self.Kpy = 1
+    self.Kdx = 0.01
     self.Kdy = -0.3
 
     self._goal_frame = None
@@ -65,39 +66,75 @@ class TurtlebotHop:
 
     self.r.sleep()
     # Loop until the node is killed with Ctrl-C
+    goal_time = rospy.Time()
+    goal_trans = self.tfBuffer.lookup_transform("base", self._goal_frame, goal_time)
 
+    goal_pose = PoseStamped()
+    goal_pose.header = Header()
+    goal_pose.header.stamp = goal_time
+    goal_pose.header.frame_id = "base" 
+    goal_pose.pose = Pose()
+    goal_pose.pose.position = goal_trans.transform.translation
+    goal_pose.pose.orientation = goal_trans.transform.rotation
+
+    i = 0
     while not rospy.is_shutdown():
       try:
         currTime = rospy.Time.now()
         t = (currTime - startTime).to_sec()
-        trans = self.tfBuffer.lookup_transform("base_link", self._goal_frame, rospy.Time())
+        turtle_trans = self.tfBuffer.lookup_transform("base_link", "base", rospy.Time())
         dt = t - last_time
-        # print(last_time, t, dt)
         last_time = t
-        # Process trans to get your state error
-        x = trans.transform.translation.x
-        y = trans.transform.translation.y
+        turtle_goal = tf2_geometry_msgs.do_transform_pose(goal_pose, turtle_trans)
+        
+        # Get state error
+        x = turtle_goal.pose.position.x
+        y = turtle_goal.pose.position.y
 
-        # Generate a control command to send to the robot
-        x_vel = self.Kpx * x + self.Kdx * (x - last_x) / dt
-        theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
+
+        dist = np.sqrt(x ** 2 + y ** 2)
+
+        log = i % 10 == 0
+        if log:
+          print("x: %f y: %f dist: %f" % (x, y, dist))
+
+        if dist <= 0.03:
+          print("Stopping...")
+          self.command_vel_pub.publish(Twist())
+          break
+
         control_command = Twist()
-        control_command.linear.x = x_vel
-        control_command.angular.z = theta_vel
+
+        if np.abs(y) > 0.02:
+          theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
+          control_command.angular.z = theta_vel
+          if log:
+            print("Rotating %f" % theta_vel)
+        else:
+          x_vel = self.Kpx * x # + self.Kdx * (x - last_x) / dt
+          control_command.linear.x = x_vel
+          if log:
+            print("Translating %f" % x_vel)
+
+        # # Generate a control command to send to the robot
+        # x_vel = self.Kpx * x # + self.Kdx * (x - last_x) / dt
+        # theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
+        # control_command = Twist()
+        # control_command.linear.x = x_vel
+        # control_command.angular.z = theta_vel
 
         last_x = x
         last_y = y
-        #################################### end your code ###############
 
         self.command_vel_pub.publish(control_command)
-      except (tf2_ros.LookupException) as e:
-        return True
 
-      except(tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+        i += 1
+      except(tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
         print(e)
         return False
       # Use our rate object to sleep until it is time to publish again
       self.r.sleep()
+    return True
 
       
 # This is Python's sytax for a main() method, which is run by default
