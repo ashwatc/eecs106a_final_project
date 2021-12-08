@@ -33,7 +33,10 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/baxter_search/srv" TYPE FILE FILES "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/src/baxter_search/srv/Guide.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/baxter_search/srv" TYPE FILE FILES
+    "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/src/baxter_search/srv/Guide.srv"
+    "/home/cc/ee106a/fl21/class/ee106a-aes/Desktop/eecs106a_final_project/src/baxter_search/srv/SweepPose.srv"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

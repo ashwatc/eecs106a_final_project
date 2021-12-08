@@ -33,9 +33,9 @@ class TurtlebotHop:
 
     # Create a timer object that will sleep long enough to result in
     # a 10Hz publishing rate
-    self.r = rospy.Rate(3) # 10hz
+    self.r = rospy.Rate(10) # 10hz
 
-    self.Kpx = 0.5
+    self.Kpx = 0.1
     self.Kpy = 1
     self.Kdx = 0.01
     self.Kdy = -0.3
@@ -94,24 +94,26 @@ class TurtlebotHop:
 
         dist = np.sqrt(x ** 2 + y ** 2)
 
-        log = i % 10 == 0
+        log = i % 5 == 0
         if log:
           print("x: %f y: %f dist: %f" % (x, y, dist))
 
-        if dist <= 0.03:
+        if dist < 0.1:
           print("Stopping...")
           self.command_vel_pub.publish(Twist())
           break
 
         control_command = Twist()
 
-        if np.abs(y) > 0.04 and dist > 0.2:
+        if np.abs(y) > 0.08 and dist > 0.2:
           theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
+          theta_vel = np.sign(theta_vel) * max(np.abs(theta_vel), 0.1)
           control_command.angular.z = theta_vel
           if log:
             print("Rotating %f" % theta_vel)
         else:
           x_vel = self.Kpx * x # + self.Kdx * (x - last_x) / dt
+          # x_vel = np.sign(x_vel) * max(np.abs(x_vel), 0.1)
           control_command.linear.x = x_vel
           if log:
             print("Translating %f" % x_vel)

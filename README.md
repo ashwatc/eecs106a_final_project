@@ -40,6 +40,8 @@ rosrun baxter_interface joint_trajectory_action_server.py
 roslaunch baxter_moveit_config demo_baxter.launch load_robot_description:=true
 
 ### 1 terminal
+rosrun baxter_tools camera_control.py -o right_hand_camera -r 1280x800
+
 roslaunch baxter_search right_arm_ar_track.launch
 
 ### 1 terminal
@@ -63,4 +65,6 @@ ssh turtlebot@pink.local
 export ROS_MASTER_URI=http://archytas.local:11311
 
 roslaunch turtlebot_bringup minimal.launch
+
+roslaunch turtlebot_bringup 3dsensor.launch
 

@@ -21,18 +21,25 @@ class GuideCoordinator:
 
 		self.pub_goal =rospy.Publisher("/guide_goal", PoseStamped, queue_size=10)
 
+		rospy.Subscriber("/ar_pose_marker", AlvarMarkers, self.check_seen)
+
+		self.guiding = False
+
 		rospy.spin()
 
 	def check_seen(self, msg):
+		if not self.guiding:
+			return
 		current = set([m.id for m in msg.markers])
 		union = current | self.seen_markers
 		new_markers = current - self.seen_markers
 		if len(new_markers) > 0:
 			print("Detected new AR tag")
 			print(union)
-
 			self.set_baxter_guiding(False)
-			self.turtle_hop_srv("ar_marker_%s" % str(new_markers.pop()))
+			success = self.turtle_hop_srv("ar_marker_%s" % str(new_markers.pop()))
+			if not success:
+				rospy.shutdown()
 			print("Continuing guide\n")
 			self.set_baxter_guiding(True)
 
@@ -46,11 +53,10 @@ class GuideCoordinator:
 	def start_guide(self, request):
 		self.seen_markers = set(request.ignore_tags)
 		self.set_baxter_guiding(True)
-		print("HERE!")
+		self.guiding = True
+		print("Beginning guide phase to ", request.goal_pose)
 		self.pub_goal.publish(request.goal_pose)
-		sub = rospy.Subscriber("/ar_pose_marker", AlvarMarkers, self.check_seen)
 		rospy.wait_for_message("/finished_guide", Bool)
-		sub.unsubscribe()
 		return True
 
 

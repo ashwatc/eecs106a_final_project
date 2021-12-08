@@ -57,7 +57,7 @@ class PathPlanner(object):
         self._group.set_end_effector_link(end_effector)
 
         # Set the maximum time MoveIt will try to plan before giving up
-        self._group.set_planning_time(10)
+        self._group.set_planning_time(15)
 
         # Set the bounds of the workspace
         self._group.set_workspace([-2, -2, -2, 2, 2, 2])

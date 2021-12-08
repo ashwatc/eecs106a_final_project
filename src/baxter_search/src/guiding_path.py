@@ -35,26 +35,6 @@ class GuideController:
 
 		self.orien_const = orien_const
 
-		# TODO: get this from a topic
-		# x = 0.628
-		# y = -0.159
-		# z = 0.065
-		# goal = PoseStamped()
-		# goal.header.frame_id = "base"
-
-		# #x, y, and z position
-		# goal.pose.position.x = x
-		# goal.pose.position.y = y
-		# goal.pose.position.z = z
-
-		# #Orientation as a quaternion
-		# goal.pose.orientation.x = 0.704
-		# goal.pose.orientation.y = -0.690
-		# goal.pose.orientation.z = 0.112
-		# goal.pose.orientation.w = -0.126
-
-		# self.goal = goal
-
 		self.tfBuffer = tf2_ros.Buffer()
   		self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
 
@@ -86,23 +66,24 @@ class GuideController:
 				while self._stop:
 					continue
 
+				print("Executing path")
+
 				self.planner.execute_plan(plan)
 				
 				# subscribe to topic telling us when to stop
 				close_to_goal = False
 
-				while not self._stop:
-					continue
-
 				while not close_to_goal and not self._stop:
 					curr_trans = self.tfBuffer.lookup_transform("base", self.end_ef, rospy.Time())
 					close_to_goal = np.linalg.norm([curr_trans.transform.translation.x - self.goal.pose.position.x, curr_trans.transform.translation.y - self.goal.pose.position.y, curr_trans.transform.translation.z - self.goal.pose.position.z]) <= 0.02
 				if self._stop:
+					print("Stopped for AR tag")
 					self.planner.stop_execution()
 					continue
 				else:
+					print("Finished guide phase")
 					self.pub_finished.publish(True)
-					break
+					exit()
 
 			except Exception as e:
 				print e
