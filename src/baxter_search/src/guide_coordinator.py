@@ -28,6 +28,7 @@ class GuideCoordinator:
 
 			self.set_baxter_guiding(False)
 			self.turtle_hop_srv("ar_marker_%s" % str(new_markers.pop()))
+			print("Continuing guide\n")
 			self.set_baxter_guiding(True)
 
 		self.seen_markers = union 

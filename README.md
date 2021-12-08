@@ -55,12 +55,12 @@ rosrun baxter_search guiding_path.py
 
 rosrun baxter_search guide_coordinator.py
 
-## Turtlebot Setup:
+## Turtlebot Setup: Do this before launching demo_baxter.launch
 source devel/setup.bash
 
 ssh turtlebot@pink.local
 
-export ROS_MASTER_URI=http://archytas.local:13311
+export ROS_MASTER_URI=http://archytas.local:11311
 
 roslaunch turtlebot_bringup minimal.launch
 

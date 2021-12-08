@@ -5,7 +5,7 @@ from std_msgs.msg import Bool
 
 if __name__ == '__main__':
 	rospy.init_node('dummy')
-	pub = rospy.Publisher('begin_guide', Bool, queue_size=10)
+	pub = rospy.Publisher('/begin_guide', Bool, queue_size=10)
 	while not rospy.is_shutdown():
 		r = raw_input("Enter to begin")
 		pub.publish(True)

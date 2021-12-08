@@ -84,6 +84,9 @@ class Guide:
 				# subscribe to topic telling us when to stop
 				close_to_goal = False
 
+				while not self._stop:
+					continue
+
 				while not close_to_goal and not self._stop:
 					curr_trans = self.tfBuffer.lookup_transform("base", self.end_ef, rospy.Time())
 					close_to_goal = np.linalg.norm([curr_trans.transform.translation.x - self.goal.pose.position.x, curr_trans.transform.translation.y - self.goal.pose.position.y, curr_trans.transform.translation.z - self.goal.pose.position.z]) <= 0.02
