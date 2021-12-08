@@ -10,7 +10,7 @@ import imutils
 from geometry_msgs.msg import Twist
 
 
-Kppos = 0.001
+Kppos = 0.003
 Kptheta = -0.001
 pos_vel = 0
 theta_vel = 0
@@ -61,7 +61,7 @@ def callback(message):
     # print("y: ", y + h/2)
     # print("area:", w*h)
     # print("\n")
-    # # #display the image
+    # # display the image
     # cv2.imshow('image',mask)
     # cv2.waitKey(0)
     #-----------------------------------------------------------------------------
@@ -100,14 +100,15 @@ def callback(message):
         print(pos_vel)
         print("\n")
         control_command = Twist()
+        print(w * h)
         
-        if w * h < 1000:
+        if w * h < 5000:
             control_command.angular.z = 0.6
             control_command.linear.x = 0.0 #pos_vel
 
         else:
             control_command.angular.z = theta_vel
-            if w * h < 15000:
+            if w * h < 45000:
                 control_command.linear.x = pos_vel
             else:
                 control_command.linear.x = 0
