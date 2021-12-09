@@ -40,6 +40,11 @@ rosrun baxter_interface joint_trajectory_action_server.py
 roslaunch baxter_moveit_config demo_baxter.launch load_robot_description:=true
 
 ### 1 terminal
+<<<<<<< Updated upstream
+=======
+rosrun baxter_search baxter_cam.py -o right_hand_camera -r 1280x800 --exposure 5
+
+>>>>>>> Stashed changes
 roslaunch baxter_search right_arm_ar_track.launch
 
 ### 1 terminal
