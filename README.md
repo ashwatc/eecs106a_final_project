@@ -26,6 +26,20 @@ publish: boolean status (moving or stopped)
 Node: turtlebot_seek
 
 
+## Turtlebot Setup: Do this before launching demo_baxter.launch
+source devel/setup.bash
+
+ssh turtlebot@pink.local
+
+export ROS_MASTER_URI=http://archytas.local:11311
+
+## 1 terminal
+roslaunch turtlebot_bringup minimal.launch
+
+## 1 terminal
+roslaunch turtlebot_bringup 3dsensor.launch
+
+
 ## Archytas Setup:
 
 source devel/setup.bash
@@ -34,38 +48,38 @@ source devel/setup.bash
 ### 1 terminal
 rosrun baxter_tools enable_robot.py -e
 
+rosrun baxter_search baxter_cam.py -o right_hand_camera -r 1280x800 --exposure 5
+
 rosrun baxter_interface joint_trajectory_action_server.py
 
 ### 1 terminal
 roslaunch baxter_moveit_config demo_baxter.launch load_robot_description:=true
 
 ### 1 terminal
-<<<<<<< Updated upstream
-=======
-rosrun baxter_search baxter_cam.py -o right_hand_camera -r 1280x800 --exposure 5
-
->>>>>>> Stashed changes
 roslaunch baxter_search right_arm_ar_track.launch
 
-### 1 terminal
-roslaunch baxter_search baxter_guide.launch
+---
 
-OR
+## Phase 1
+rosrun baxter_search find_turtlebot_and_goal.py
 
-### 3 terminals
+rosrun baxter_search initial_sweep.py
 
+rosservice call baxter_initial_sweep
+
+## Phase 2
 rosrun turtlebot_nav turtlebot_hop.py
 
 rosrun baxter_search guiding_path.py
 
 rosrun baxter_search guide_coordinator.py
 
-## Turtlebot Setup: Do this before launching demo_baxter.launch
-source devel/setup.bash
+## Phase 3
 
-ssh turtlebot@pink.local
+rosrun turtlebot_nav turtlebot_last_leg.py
 
-export ROS_MASTER_URI=http://archytas.local:11311
+# Runs
 
-roslaunch turtlebot_bringup minimal.launch
+rosrun baxter_search dummy.py # all 3 phases
 
+rosrun baxter_search dummy2.py # phase 2 and 3
