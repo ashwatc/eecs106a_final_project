@@ -50,7 +50,7 @@ class GuideCoordinator:
 		self.pub_goal.publish(request.goal_pose)
 		sub = rospy.Subscriber("/ar_pose_marker", AlvarMarkers, self.check_seen)
 		rospy.wait_for_message("/finished_guide", Bool)
-		sub.unsubscribe()
+		sub.unregister()
 		return True
 
 

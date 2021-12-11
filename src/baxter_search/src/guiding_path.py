@@ -28,8 +28,8 @@ class GuideController:
 		orien_const.header.frame_id = "base"
 		orien_const.orientation.x = np.sqrt(2) / 2
 		orien_const.orientation.y = -np.sqrt(2) / 2
-		orien_const.absolute_x_axis_tolerance = np.pi / 4
-		orien_const.absolute_y_axis_tolerance = np.pi / 4
+		orien_const.absolute_x_axis_tolerance = np.pi / 3
+		orien_const.absolute_y_axis_tolerance = np.pi / 3
 		orien_const.absolute_z_axis_tolerance = np.pi
 		orien_const.weight = 1.0;
 

@@ -76,7 +76,7 @@ rosrun baxter_search guide_coordinator.py
 
 ## Phase 3
 
-rosrun turtlebot_nav turtlebot_last_leg.py
+rosrun turtlebot_nav turtlebot_final_countdown.py
 
 # Runs
 

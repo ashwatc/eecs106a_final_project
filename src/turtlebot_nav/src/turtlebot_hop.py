@@ -36,7 +36,7 @@ class TurtlebotHop:
     self.r = rospy.Rate(10) # 10hz
 
     self.Kpx = 0.1
-    self.Kpy = 1
+    self.Kpy = 1.5
     self.Kdx = 0.01
     self.Kdy = -0.3
 
@@ -105,7 +105,7 @@ class TurtlebotHop:
 
         control_command = Twist()
 
-        if np.abs(y) > 0.1 and dist > 0.2:
+        if np.abs(y) > 0.08:
           theta_vel = self.Kpy * y  #+ self.Kdy * (y - last_y) / dt
           theta_vel = np.sign(theta_vel) * max(np.abs(theta_vel), 0.15)
           control_command.angular.z = theta_vel

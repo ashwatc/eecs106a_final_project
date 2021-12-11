@@ -8,8 +8,8 @@ from turtlebot_nav.srv import Rescue
 if __name__ == '__main__':
 	rospy.init_node('dummy')
 	
-	rospy.wait_for_service('/baxter_initial_sweep')
-	sweep_srv = rospy.ServiceProxy('/baxter_initial_sweep', SweepPose)
+	# rospy.wait_for_service('/baxter_initial_sweep')
+	# sweep_srv = rospy.ServiceProxy('/baxter_initial_sweep', SweepPose)
 
 	rospy.wait_for_service('/guide')
 	guide_srv = rospy.ServiceProxy('/guide', Guide)
@@ -36,6 +36,8 @@ if __name__ == '__main__':
 	# goal.pose.orientation.z = 0.057
 	# goal.pose.orientation.w = -0.188
 
+	# --------------------------------- liked
+
 	x = 0.628
 	y = -0.159
 	z = 0.065
@@ -52,6 +54,26 @@ if __name__ == '__main__':
 	goal.pose.orientation.y = -0.690
 	goal.pose.orientation.z = 0.112
 	goal.pose.orientation.w = -0.126
+
+	# -----------------------------------
+
+
+	# x = 0.697
+	# y = -0.045
+	# z = 0.088
+	# goal = PoseStamped()
+	# goal.header.frame_id = "base"
+
+	# #x, y, and z position
+	# goal.pose.position.x = x
+	# goal.pose.position.y = y
+	# goal.pose.position.z = z
+
+	# #Orientation as a quaternion
+	# goal.pose.orientation.x = 0.848
+	# goal.pose.orientation.y = -0.514
+	# goal.pose.orientation.z = 0.079
+	# goal.pose.orientation.w = -0.098
 	
 	while not rospy.is_shutdown():
 		r = raw_input("Enter to begin")

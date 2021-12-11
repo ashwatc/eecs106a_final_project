@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import rospy
+from turtlebot_nav.srv import Rescue
 from baxter_search.srv import Guide, SweepPose
 from geometry_msgs.msg import PoseStamped
 
@@ -66,7 +67,7 @@ if __name__ == '__main__':
 	g.goal_pose = goal
 	g.ignore_tags = [5, 0]
 	while not rospy.is_shutdown():
-		# r = raw_input("Enter to begin")
+		r = raw_input("Enter to begin")
 		# guide_srv(goal, [5, 0])
 		goal = sweep_srv()
 		guide_srv(goal.goal_pose, [5, 0])
