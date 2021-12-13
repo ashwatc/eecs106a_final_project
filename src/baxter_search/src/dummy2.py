@@ -77,5 +77,6 @@ if __name__ == '__main__':
 	
 	while not rospy.is_shutdown():
 		r = raw_input("Enter to begin")
+		print(goal)
 		guide_srv(goal, [5, 0])
 		rescue_srv()

@@ -65,7 +65,6 @@ rosrun baxter_search find_turtlebot_and_goal.py
 
 rosrun baxter_search initial_sweep.py
 
-rosservice call baxter_initial_sweep
 
 ## Phase 2
 rosrun turtlebot_nav turtlebot_hop.py

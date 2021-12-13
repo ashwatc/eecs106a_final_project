@@ -49,21 +49,21 @@ class BaxterInitialSweep:
 	def set_turtlebot_pose(self, request):
 		# callback from subscription turtlebot pose pub
 		# sets a instance variable with the pose, and prevents future overwrites
-		if not self.found_turtlebot and self.stopped and self.current_pose:
+		if not self.turtlebot_pose and self.stopped and self.current_pose:
 			print("setting turtlebot pose:", request)
 			print("\n\n\n")
 			self.turtlebot_pose = self.current_pose
-			self.found_turtlebot = True
+			#self.found_turtlebot = True
 		return
 
 	def set_goal_pose(self, request):
 		# callback from subscription goal cone pose pub
 		# sets a instance variable with the pose, and prevents future overwrites
-		if not self.found_goal and self.stopped and self.current_pose:
+		if not self.goal_pose and self.stopped and self.current_pose:
 			print("setting goal cup pose:", request)
 			print("\n\n\n")
 			self.goal_pose = self.current_pose
-			self.found_goal = True
+			#self.found_goal = True
 		return
 
 	def send_movements(self, pose_positions):
@@ -134,16 +134,14 @@ class BaxterInitialSweep:
 			rospy.sleep(1.0)
 
 	def sweep(self, request):
+		self.turtlebot_pose = None
+		self.goal_pose = None
 		# subscribe to the turtlebot and goal pose publisher
 		turtlebot_sub = rospy.Subscriber("/find_turtlebot_pose", PoseStamped, self.set_turtlebot_pose)
 		goal_sub = rospy.Subscriber("/find_goal_pose", PoseStamped, self.set_goal_pose)
 
 		# run the sweep
-		# pose_1 = [0.782, -0.642, 0.288, 0.046, 0.987, -0.042, 0.146]
-		# pose_1 = [0.803, -0.640, 0.336, 0.100, 0.975, -0.104, 0.171]
-		# pose_1 = [0.811, -0.681, 0.214, -0.518, 0.794, -0.285, 0.143]
-		# pose_1 = [0.842, -0.656, 0.215, -0.524, 0.783, -0.303, 0.141]
-		pose_1 = [0.825, -0.754, 0.198, -0.563, 0.715, -0.380, 0.167] 
+		pose_1 = [0.818, -0.789, 0.154, -0.549, 0.775, -0.298, 0.097]
 		#pose_2 = [0.662, -0.639, 0.182,0.201, 0.972, -0.055, 0.110]
 		pose_2 = [0.588, -0.627, 0.177, -0.517, 0.843, -0.145, 0.012]
 		# pose_3 = [0.684, -0.301, 0.186,-0.063, 0.998, 0.017, 0.001]
@@ -159,7 +157,7 @@ class BaxterInitialSweep:
 
 
 
-		pose_positions = [pose_1, pose_2, pose_3, pose_4]
+		pose_positions = [pose_1, pose_2, pose_3, pose] #, pose_4, pose_3, pose_2]
 
 
 		# pose_positions = [[0.013, -0.826, 0.305, -0.018, 1.000, -0.010, 0.009], [0.197, -0.836, 0.361, 0.004, 0.980, -0.048, 0.193],
@@ -180,6 +178,7 @@ class BaxterInitialSweep:
 
 		# return the goal pose of cone
 		pose = PoseStamped()
+		pose.header.frame_id = 'base'
 		pose.pose.position.y = self.goal_pose[1]
 		pose.pose.position.z = self.goal_pose[2]
 		pose.pose.position.x = self.goal_pose[0]
