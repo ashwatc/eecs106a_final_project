@@ -74,25 +74,20 @@ class TurtleFinalCountdown:
 		# a 10Hz publishing rate
 		r = rospy.Rate(10) # 10hz
 
-		# goal_frame = 'ar_'
 		r.sleep()
 		# Loop until the node is killed with Ctrl-C
 		try:
 			currTime = rospy.Time.now()
 			t = (currTime - self.start_time).to_sec()
 			dt = t - self.last_time
-			# print(self.last_time, t, dt)
 			# Get error
 			pos = (mask.shape[0] * mask.shape[1]) / (w * h)
 			print(w*h, mask.shape)
 			theta = ((x + w/2) - (mask.shape[1] / 2))
-			# print(theta)
 
 			# Generate a control command to send to the robot
 			pos_vel = self.Kppos * pos #+ self.Kdpos * (pos - self.last_pos) / dt
 			theta_vel = self.Kptheta * theta  #+ self.Kdtheta * (theta - self.last_theta) / dt
-			# print(pos_vel)
-			# print(theta_vel)
 
 			print(pos_vel)
 			print("\n")
@@ -118,7 +113,6 @@ class TurtleFinalCountdown:
 			self.last_time = t
 
 			self.pub.publish(control_command)
-			# print("control: ", control_command)
 		except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
 			print(e)
 	    # Use our rate object to sleep until it is time to publish again

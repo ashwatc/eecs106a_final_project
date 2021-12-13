@@ -16,7 +16,6 @@ class GuideCoordinator:
 		rospy.wait_for_service('/turtlebot_hop')
 		self.turtle_hop_srv = rospy.ServiceProxy('/turtlebot_hop', Hop)
 
-		# rospy.Subscriber("/begin_guide", Bool, self.begin_guide)
 		rospy.Service('/guide', Guide, self.start_guide)
 
 		self.pub_goal =rospy.Publisher("/guide_goal", PoseStamped, queue_size=10)

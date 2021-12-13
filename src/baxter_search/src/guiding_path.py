@@ -35,26 +35,7 @@ class GuideController:
 
 		self.orien_const = orien_const
 
-		# TODO: get this from a topic
-		# x = 0.628
-		# y = -0.159
-		# z = 0.065
-		# goal = PoseStamped()
-		# goal.header.frame_id = "base"
-
-		# #x, y, and z position
-		# goal.pose.position.x = x
-		# goal.pose.position.y = y
-		# goal.pose.position.z = z
-
-		# #Orientation as a quaternion
-		# goal.pose.orientation.x = 0.704
-		# goal.pose.orientation.y = -0.690
-		# goal.pose.orientation.z = 0.112
-		# goal.pose.orientation.w = -0.126
-
-		# self.goal = goal
-
+		
 		self.tfBuffer = tf2_ros.Buffer()
   		self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
 

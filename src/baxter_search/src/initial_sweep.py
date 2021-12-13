@@ -35,14 +35,11 @@ class BaxterInitialSweep:
 		# Create the function used to call the service
 		self.compute_ik = rospy.ServiceProxy('compute_ik', GetPositionIK)
 
-		# subscribe to the camera and keep storing velocities
-
 		# Create a timer object that will sleep long enough to result in
 		# a 10Hz publishing rate
 		r = rospy.Rate(10) # 10hz
 
 		print("initialized service")
-		# print(Rescue)
 
 		rospy.spin()
 
@@ -53,7 +50,6 @@ class BaxterInitialSweep:
 			print("setting turtlebot pose:", request)
 			print("\n\n\n")
 			self.turtlebot_pose = self.current_pose
-			#self.found_turtlebot = True
 		return
 
 	def set_goal_pose(self, request):
@@ -63,7 +59,6 @@ class BaxterInitialSweep:
 			print("setting goal cup pose:", request)
 			print("\n\n\n")
 			self.goal_pose = self.current_pose
-			#self.found_goal = True
 		return
 
 	def send_movements(self, pose_positions):
@@ -85,25 +80,14 @@ class BaxterInitialSweep:
 			request.ik_request.pose_stamped.pose.position.z = pose[2]      
 
 			norm = np.sqrt(sum([p**2 for p in pose[3:]]))
-			# print("\n\nNORM VAL:", norm, "\n\n")
-
 			request.ik_request.pose_stamped.pose.orientation.x = pose[3] / norm
 			request.ik_request.pose_stamped.pose.orientation.y = pose[4] / norm
 			request.ik_request.pose_stamped.pose.orientation.z = pose[5] / norm
 			request.ik_request.pose_stamped.pose.orientation.w = pose[6] / norm
-			# request.ik_request.pose_stamped.pose.orientation.x = 0.0
-			# request.ik_request.pose_stamped.pose.orientation.y = 1.0
-			# request.ik_request.pose_stamped.pose.orientation.z = 0.0
-			# request.ik_request.pose_stamped.pose.orientation.w = 0.0
 
 			try:
 				# Send the request to the service
 				response = self.compute_ik(request)
-
-				# print("\n\n got ik response \n\n")
-
-				# Print the response HERE
-				# print(response)
 				group = MoveGroupCommander("right_arm")
 
 				group.set_end_effector_link('right_hand_camera')
@@ -112,13 +96,6 @@ class BaxterInitialSweep:
 
 				# Setting position and orientation target
 				group.set_pose_target(request.ik_request.pose_stamped)
-
-				# # TEMP CODE ASHWAT TESTING
-				# group.set_planning_time(10);
-
-				# TRY THIS
-				# Setting just the position without specifying the orientation
-				###group.set_position_target([0.5, 0.5, 0.0])
 
 				# Plan IK and execute
 				group.go()
@@ -142,32 +119,15 @@ class BaxterInitialSweep:
 
 		# run the sweep
 		pose_1 = [0.818, -0.789, 0.154, -0.549, 0.775, -0.298, 0.097]
-		#pose_2 = [0.662, -0.639, 0.182,0.201, 0.972, -0.055, 0.110]
 		pose_2 = [0.588, -0.627, 0.177, -0.517, 0.843, -0.145, 0.012]
-		# pose_3 = [0.684, -0.301, 0.186,-0.063, 0.998, 0.017, 0.001]
-		pose_3 = [0.628, -0.159, 0.065, 0.704, -0.690, 0.112, -0.126] #GOOD ONE
-		# pose_3 = [0.696, -0.068, 0.292, 0.736, -0.676, 0.001, -0.022]
-		# pose_4 = [0.623, 0.091, 0.055,-0.273, 0.961, -0.005, 0.042]
-		# pose_4 = [0.781, 0.150, 0.142, -0.360, 0.929, 0.048, 0.067]
+		pose_3 = [0.628, -0.159, 0.065, 0.704, -0.690, 0.112, -0.126]
 		pose_4 = [0.799, 0.093, 0.282, 0.965, -0.136, 0.109, -0.195]
-		
+		pose_positions = [pose_1, pose_2, pose_3, pose_4]
 
-		angle_3 = [-0.06289321230330196, 1.533213797491471, 1.145883648550404, -0.7278738838516289, -3.0464858447404315, -0.5399612373356656, 2.90727708823983]
-
-
-
-
-		pose_positions = [pose_1, pose_2, pose_3, pose] #, pose_4, pose_3, pose_2]
-
-
-		# pose_positions = [[0.013, -0.826, 0.305, -0.018, 1.000, -0.010, 0.009], [0.197, -0.836, 0.361, 0.004, 0.980, -0.048, 0.193],
-		# [0.354, -0.797, 0.402, -0.003, 0.959, -0.053, 0.277], [0.568, -0.727, 0.482, -0.011, 0.903, -0.022, 0.430]]
 		self.send_movements(pose_positions)
 
 		# move the baxter to turtle pose
 		print("found turtlebot", self.turtlebot_pose)
-		# self.send_movements([[self.turtlebot_pose.pose.position.x, self.turtlebot_pose.pose.position.y, self.turtlebot_pose.pose.position.z, 
-		# 	self.turtlebot_pose.pose.orientation.x, self.turtlebot_pose.pose.orientation.y, self.turtlebot_pose.pose.orientation.z, self.turtlebot_pose.pose.orientation.w]])
 		self.send_movements([self.turtlebot_pose])
 
 		print("turtlebot", self.turtlebot_pose)
