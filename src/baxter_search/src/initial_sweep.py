@@ -105,8 +105,6 @@ class BaxterInitialSweep:
 
 			rospy.sleep(1.0)
 			self.current_pose = pose
-			print("SAVED POSE", self.current_pose)
-			print("ACTUAL POSE", group.get_current_pose())
 			self.stopped = True
 			rospy.sleep(1.0)
 

@@ -14,6 +14,9 @@ if __name__ == '__main__':
 	rospy.wait_for_service('/guide')
 	guide_srv = rospy.ServiceProxy('/guide', Guide)
 
+	rospy.wait_for_service('/turtlebot_last_leg')
+	rescue_srv = rospy.ServiceProxy('/turtlebot_last_leg', Rescue)
+
 	
 	while not rospy.is_shutdown():
 		r = raw_input("Enter to begin")
